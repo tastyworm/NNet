@@ -1,15 +1,17 @@
 
 public class Node {
 
-	private int x;
-	private int y;
-	private int height;
-	private int width;
-	private int inc_connx;
-	private int inc_conny;
-	private int out_connx;
-	private int out_conny;
-	private String nodeType;
+	private int x;					// The x-axis of the top-left corner of the node (graphic)
+	private int y;					// The y-axis of the top-left corner of the node (graphic)
+	private int height;				// The height of the node (graphic)
+	private int width;				// The width of the node (graphic)
+	private int inc_connx;			// The x-axis of the incoming connector-lines (graphic)
+	private int inc_conny;			// The y-axis of the incoming connector-lines (graphic)
+	private int out_connx;			// The x-axis of the outgoing connector-lines (graphic)
+	private int out_conny;			// The y-axis of the outgoing connector-lines (graphic)
+	private String nodeType;		// The type of node (I)nput, (O)utput, (H)idden
+	private double value;			// The value of the node
+	private static int totalNodes;	// The total number of nodes within the network
 
 	public Node(int x, int y, int height, int width, String nodeType) throws NodeTypeException {
 		super();
@@ -33,6 +35,20 @@ public class Node {
 		this.out_connx = x + width - 1;
 		this.out_conny = this.inc_conny;
 		this.nodeType = nodeType;
+		totalNodes++;
+	}
+
+	public int getTotalNodes() {
+		return totalNodes;
+	}
+
+	
+	public double getValue() {
+		return value;
+	}
+
+	public void setValue(double value) {
+		this.value = value;
 	}
 
 	public int getX() {
@@ -70,5 +86,4 @@ public class Node {
 	public String getNodeType() {
 		return nodeType;
 	}
-
 }
